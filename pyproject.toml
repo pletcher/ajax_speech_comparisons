@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ajax-odysseus-speech-analysis"
+version = "0.1.0"
+description = ""
+authors = ["Charles Pletcher <c@plet.ch>"]
+readme = "README.md"
+packages = [{include = "ajax_odysseus_speech_analysis"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+cltk = "^1.1.6"
+jupyterlab = "^3.5.2"
+matplotlib = "^3.6.2"
+ipympl = "^0.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
