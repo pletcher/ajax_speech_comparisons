@@ -4,7 +4,7 @@ Sophocles' _Ajax_ by the numbers?
 This project is a first stab at quantifying speaker similarity across multiple dimensions
 in Sophocles' _Ajax_.
 
-See [[./experiments.ipynb]] for the latest some experimental data.
+See [[./experiments.ipynb]] for the some experimental data.
 
 This project owes much to the [CLTK](https://cltk.org) and to the data made available
 by the Perseus Project at https://github.com/OpenGreekAndLatin/First1KGreek.
