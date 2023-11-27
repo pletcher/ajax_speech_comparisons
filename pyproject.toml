@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "ajax_odysseus_speech_analysis"}]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.11"
+python = ">=3.8,<3.11"
 cltk = "^1.1.6"
 jupyterlab = "^3.5.2"
 matplotlib = "^3.6.2"
