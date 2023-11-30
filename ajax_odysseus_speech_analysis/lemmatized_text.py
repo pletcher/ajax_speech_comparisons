@@ -4,7 +4,7 @@ import csv
 import logging
 import sys
 
-from ajax_odysseus_speech_analysis.group_speeches import AjaxDocument
+from ajax_odysseus_speech_analysis.group_speeches import SophocleanDocument
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -18,8 +18,9 @@ class Line:
 
 
 class LemmatizedText:
-    def __init__(self, urn="Ajax"):
-        self.document = AjaxDocument()
+    def __init__(self, urn):
+        self.urn = urn
+        self.document = SophocleanDocument(self.urn)
         self.speeches = self.document.group_lines()
 
     def analyze_lines(self, speaker):
@@ -53,7 +54,7 @@ class LemmatizedText:
         ]
 
         with open(
-            "data/urn:cts:greekLit:tlg0011.tlg003.perseus-grc2.cp-words.csv",
+            f"data/urn:cts:greekLit:{self.urn}.cp-words.csv",
             "w",
             newline="",
             encoding="utf-8",
@@ -74,7 +75,7 @@ class LemmatizedText:
                     for word in line.words:
                         raw_word = word.string
                         n = line.n
-                        urn = f"urn:cts:greekLit:tlg0011.tlg003.perseus-grc2:{n}@{raw_word}"
+                        urn = f"urn:cts:greekLit:{self.urn}:{n}@{raw_word}"
                         speaker = line.speaker
                         pos = word.pos
                         lemma = word.lemma
@@ -91,6 +92,18 @@ class LemmatizedText:
                         )
 
 
+URNS = [
+    "tlg0011.tlg001.perseus-grc2",
+    "tlg0011.tlg002.perseus-grc2",
+    "tlg0011.tlg003.perseus-grc2",
+    "tlg0011.tlg004.perseus-grc2",
+    "tlg0011.tlg005.perseus-grc2",
+    "tlg0011.tlg006.perseus-grc2",
+    "tlg0011.tlg007.perseus-grc2",
+]
+
+
 if __name__ == "__main__":
-    lemmatized = LemmatizedText()
-    lemmatized.export_to_csv()
+    for urn in URNS:
+        lemmatized = LemmatizedText(urn)
+        lemmatized.export_to_csv()
